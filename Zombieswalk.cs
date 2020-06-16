@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Zombieswalk : MonoBehaviour
 {
+    //Set goals for zombies.
     public Transform goal;
     public NavMeshAgent agent;
     private Animator anim;
@@ -17,11 +18,11 @@ public class Zombieswalk : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         agent.destination = goal.position;
-        //if (transform.position != goal.position)
+        
         if (Vector3.Distance(transform.position, goal.position) > 1.5f)
         {
             anim.SetInteger("Condition", 1);
@@ -30,7 +31,7 @@ public class Zombieswalk : MonoBehaviour
         {
             anim.SetInteger("Condition", 2);
             anim.SetInteger("Condition", 0);
-            //Destroy(this.gameObject);
+            
             Destroy(this.gameObject);
             ui.Attackplayer();
             chancontroller.hit();

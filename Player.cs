@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //The character control script And the gesture of the character.
     public Animator anim;
     public Rigidbody rbody;
     private float inputH;
@@ -12,7 +13,7 @@ public class Player : MonoBehaviour
     private bool Slide;
     public float rotSpeed = 80.0f;
     public float rot = 0.0f;
-    // Start is called before the first frame update
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -20,9 +21,10 @@ public class Player : MonoBehaviour
         Run = false;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        //gesture.
         if (Input.GetKeyDown("1"))
         {
             anim.Play("WAIT01", -1, 0f);
@@ -39,6 +41,8 @@ public class Player : MonoBehaviour
         {
             anim.Play("WAIT04", -1, 0f);
         }
+
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             Run = true;
@@ -63,10 +67,7 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("Slide", false);
         }
-        /*if (Input.GetMouseButtonDown("0"))
-        {
-            anim.Play("WAIT04", -1, 0f);
-        }*/
+        
         rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
         transform.eulerAngles = new Vector3(0, rot, 0);
 

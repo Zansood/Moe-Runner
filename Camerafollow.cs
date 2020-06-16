@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Camerafollow : MonoBehaviour
 {
+    //Scripts control the camera's rotation.
     public Transform PlayerTransform;
 
     private Vector3 _cameraOffset;
@@ -20,7 +21,6 @@ public class Camerafollow : MonoBehaviour
         _cameraOffset = transform.position - PlayerTransform.position;
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         if(RotateAroundPlayer)
@@ -40,6 +40,8 @@ public class Camerafollow : MonoBehaviour
         transform.position = Vector3.Slerp(transform.position, newPos, SmoothFactor);
 
         if (LookAtPlayer || RotateAroundPlayer)
+        {
             transform.LookAt(PlayerTransform);
+        }
     }
 }
